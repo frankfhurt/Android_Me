@@ -14,54 +14,53 @@
 * limitations under the License.
 */
 
-package com.example.android.android_me.ui;
+package com.example.android.android_me.ui
 
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.FragmentManager
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
 
-import com.example.android.android_me.R;
-import com.example.android.android_me.data.AndroidImageAssets;
+import com.example.android.android_me.R
+import com.example.android.android_me.data.AndroidImageAssets
 
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
-public class AndroidMeActivity extends AppCompatActivity {
+class AndroidMeActivity : AppCompatActivity() {
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_android_me);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_android_me)
 
         // Only create new fragments when there is no previously saved state
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
 
             // Create a new head BodyPartFragment
-            BodyPartFragment headFragment = new BodyPartFragment();
+            val headFragment = BodyPartFragment()
 
             // Set the list of image id's for the head fragment and set the position to the second image in the list
-            headFragment.setImageIds(AndroidImageAssets.getHeads());
-            headFragment.setListIndex(1);
+            headFragment.setImageIds(AndroidImageAssets.heads)
+            headFragment.setListIndex(1)
 
             // Add the fragment to its container using a FragmentManager and a Transaction
-            FragmentManager fragmentManager = getSupportFragmentManager();
+            val fragmentManager = supportFragmentManager
 
             fragmentManager.beginTransaction()
                     .add(R.id.head_container, headFragment)
-                    .commit();
+                    .commit()
 
             // Create and display the body and leg BodyPartFragments
 
-            BodyPartFragment bodyFragment = new BodyPartFragment();
-            bodyFragment.setImageIds(AndroidImageAssets.getBodies());
+            val bodyFragment = BodyPartFragment()
+            bodyFragment.setImageIds(AndroidImageAssets.bodies)
             fragmentManager.beginTransaction()
                     .add(R.id.body_container, bodyFragment)
-                    .commit();
+                    .commit()
 
-            BodyPartFragment legFragment = new BodyPartFragment();
-            legFragment.setImageIds(AndroidImageAssets.getLegs());
+            val legFragment = BodyPartFragment()
+            legFragment.setImageIds(AndroidImageAssets.legs)
             fragmentManager.beginTransaction()
                     .add(R.id.leg_container, legFragment)
-                    .commit();
+                    .commit()
         }
 
     }

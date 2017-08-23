@@ -14,22 +14,25 @@
 * limitations under the License.
 */
 
-package com.example.android.android_me.ui;
+package com.example.android.android_me.ui
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 
-import com.example.android.android_me.R;
+import com.example.android.android_me.R
 
 // This activity is responsible for displaying the master list of all images
-public class MainActivity extends AppCompatActivity {
+class MainActivity : AppCompatActivity(), MasterListFragment.OnImageClickListener {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
 
+    override fun onImageSelected(position: Int) {
+        Toast.makeText(this, "Position clicked = $position", Toast.LENGTH_SHORT).show()
     }
 
 }
