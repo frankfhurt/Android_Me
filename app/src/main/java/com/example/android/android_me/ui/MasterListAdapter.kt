@@ -22,8 +22,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 
-
-// Custom adapter class that displays a list of Android-Me images in a GridView
 class MasterListAdapter
 /**
  * Constructor method
